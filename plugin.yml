@@ -1,0 +1,4 @@
+﻿name: LibPotions
+main: com.fyxridd.lib.potions.PotionsPlugin
+version: 0.1.0
+depend: [LibCore]
