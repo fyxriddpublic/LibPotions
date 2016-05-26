@@ -9,46 +9,23 @@ import com.fyxridd.lib.msg.manager.InfoManager;
 import com.fyxridd.lib.msg.manager.MsgManager;
 import com.fyxridd.lib.msg.manager.OuterManager;
 import com.fyxridd.lib.msg.manager.ScoreboardManager;
+import com.fyxridd.lib.potions.manager.PotionsManager;
 
 public class PotionsPlugin extends SimplePlugin{
-    public static MsgPlugin instance;
-    public static boolean libParamsHook;
-
-    private MsgManager msgManager;
-    private ScoreboardManager scoreboardManager;
-    private InfoManager infoManager;
+    public static PotionsPlugin instance;
+    
+    private PotionsManager potionsManager;
     
     @Override
     public void onEnable() {
         instance = this;
-        try {
-            Class.forName("com.fyxridd.lib.params.ParamsPlugin");
-            libParamsHook = true;
-        } catch (Exception e) {
-        }
-
-        //注册配置
-        ConfigApi.register(pn, LangConfig.class);
-        ConfigApi.register(pn, ScoreboardConfig.class);
-        ConfigApi.register(pn, MsgConfig.class);
         
-        msgManager = new MsgManager();
-        scoreboardManager = new ScoreboardManager();
-        infoManager = new InfoManager();
-        if (libParamsHook) new OuterManager();
+        potionsManager = new PotionsManager();
         
         super.onEnable();
     }
 
-    public MsgManager getMsgManager() {
-        return msgManager;
-    }
-
-    public ScoreboardManager getScoreboardManager() {
-        return scoreboardManager;
-    }
-
-    public InfoManager getInfoManager() {
-        return infoManager;
+    public PotionsManager getPotionsManager() {
+        return potionsManager;
     }
 }
